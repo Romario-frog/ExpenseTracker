@@ -1,6 +1,6 @@
 # 💸 Трекер витрат
 
-![Інтерфейс програми](image.png)
+<img width="876" height="602" alt="image" src="https://github.com/user-attachments/assets/3ef7f024-792e-44fc-ab8c-e5ea0c3c082d" />
 
 ## 📌 Що це за програма
 Це простий і зручний застосунок для контролю фінансів.  
