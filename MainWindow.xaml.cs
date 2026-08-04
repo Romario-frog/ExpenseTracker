@@ -24,7 +24,7 @@ public partial class MainWindow : Window
     {
         if (!decimal.TryParse(AmountBox.Text.Replace(',', '.'), NumberStyles.Number, CultureInfo.InvariantCulture, out decimal amount) || amount <= 0)
         {
-            MessageBox.Show("Введи коректну суму більше 0.", "Помилка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Enter a valid amount greater than 0.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -49,7 +49,7 @@ public partial class MainWindow : Window
     {
         if (TransactionsGrid.SelectedItem is not Transaction selected)
         {
-            MessageBox.Show("Спочатку вибери операцію зі списку.", "Увага", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("First select a transaction from the list.", "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
@@ -62,7 +62,7 @@ public partial class MainWindow : Window
         if (_transactions.Count == 0)
             return;
 
-        var result = MessageBox.Show("Точно очистити всю історію?", "Підтвердження", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        var result = MessageBox.Show("Are you sure you want to clear the entire history?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
         if (result == MessageBoxResult.Yes)
         {
@@ -80,11 +80,11 @@ public partial class MainWindow : Window
 
     private void UpdateBalance()
     {
-        decimal income = _transactions.Where(t => t.Type == "Дохід").Sum(t => t.Amount);
-        decimal expenses = _transactions.Where(t => t.Type == "Витрата").Sum(t => t.Amount);
+        decimal income = _transactions.Where(t => t.Type == "Income").Sum(t => t.Amount);
+        decimal expenses = _transactions.Where(t => t.Type == "Expense").Sum(t => t.Amount);
         decimal balance = income - expenses;
 
-        BalanceText.Text = $"{balance:0.00} грн";
+        BalanceText.Text = $"${balance:0.00}";
     }
 
     private static string GetComboBoxText(ComboBox comboBox)
